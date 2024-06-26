@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K'ribean Pizza Gourmet</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="Images/Logo.icon"> <!-- Añadir favicon -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .header, .hero, .menu-section, #cart {
+      margin: 20px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .menu-item {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .quantity-control {
+      display: flex;
+      align-items: center;
+    }
+    .quantity-control button {
+      width: 30px;
+      height: 30px;
+    }
+    .quantity-control input {
+      width: 50px;
+      text-align: center;
+      margin: 0 10px;
+    }
+    #cart {
+      border-top: 2px solid #ccc;
+      padding-top: 10px;
+    }
+    #cart h2, #cart-total {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+    #cart-items div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .btn-primary {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Images/Logo.png" alt="Logo" width="300" height="250">
+    <div class="Contáctanos">
+      CONTÁCTANOS
+      <div class="Telefono1">
+        +57 3113982576
+        <div class="Telefono2">
+          +57 3186687044
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="hero">
+    <h1>Bienvenidos</h1>
+    <p>K'ribean Pizza Gourmet</p>
+    <p>"Un Menú Para Recorrer Los Sabores Que Llevamos A Tu Mesa"</p>
+  </section>
+  <div class="container">
+    <h2>Menú</h2>
+    <button class="btn-primary" onclick="toggleSection('pizzas')">Porciones De Pizza</button>
+    <button class="btn-primary" onclick="toggleSection('bebidas')">Bebidas</button>
+
+    <div id="pizzas" class="menu-section" style="display: none;">
+      <!-- Menu de pizzas -->
+      <div class="menu-item">
+        <img src="Images/Pollo.jpg" alt="Pizza Pollo con Jamón">
+        <h3>Pizza Pollo con Jamón</h3>
+        <span>$4000.00</span>
+        <div class="quantity-control">
+          <button onclick="changeQuantity('pizza1', -1)">-</button>
+          <input type="number" id="pizza1" value="0" min="0" max="50" readonly>
+          <button onclick="changeQuantity('pizza1', 1)">+</button>
+        </div>
+        <button class="btn-primary" onclick="addToCart('Pizza Pollo con Jamón', 4000, 'pizza1')">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Jamon.jpg" alt="Pizza Jamón con Queso">
+        <h3>Pizza Jamón con Queso</h3>
+        <span>$4000.00</span>
+        <div class="quantity-control">
+          <button onclick="changeQuantity('pizza2', -1)">-</button>
+          <input type="number" id="pizza2" value="0" min="0" max="50" readonly>
+          <button onclick="changeQuantity('pizza2', 1)">+</button>
+        </div>
+        <button class="btn-primary" onclick="addToCart('Pizza Jamón con Queso', 4000, 'pizza2')">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Hawaiana.jpg" alt="Pizza Hawaiana">
+        <h3>Pizza Hawaiana</h3>
+        <span>$4500.00</span>
+        <div class="quantity-control">
+          <button onclick="changeQuantity('pizza3', -1)">-</button>
+          <input type="number" id="pizza3" value="0" min="0" max="50" readonly>
+          <button onclick="changeQuantity('pizza3', 1)">+</button>
+        </div>
+        <button class="btn-primary" onclick="addToCart('Pizza Hawaiana', 4500, 'pizza3')">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Campesina.jpg" alt="Pizza Campesina">
+        <h3>Pizza Campesina</h3>
+        <span>$4500.00</span>
+        <div class="quantity-control">
+          <button onclick="changeQuantity('pizza4', -1)">-</button>
+          <input type="number" id="pizza4" value="0" min="0" max="50" readonly>
+          <button onclick="changeQuantity('pizza4', 1)">+</button>
+        </div>
+        <button class="btn-primary" onclick="addToCart('Pizza Campesina', 4500, 'pizza4')">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Pollo_Champ.jpg" alt="Pizza Champiñón con Pollo">
+        <h3>Pizza Champiñón con Pollo</h3>
+        <span>$4500.00</span>
+        <div class="quantity-control">
+          <button onclick="changeQuantity('pizza5', -1)">-</button>
+          <input type="number" id="pizza5" value="0" min="0" max="50" readonly>
+          <button onclick="changeQuantity('pizza5', 1)">+</button>
+        </div>
+        <button class="btn-primary" onclick="addToCart('Pizza Champiñón con Pollo', 4500, 'pizza5')">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Pepperoni.png" alt="Pizza Pepperoni">
+        <h3>Pizza Pepperoni</h3>
+        <span>$4500.00</span>
+        <div class="quantity-control">
+          <button onclick="changeQuantity('pizza6', -1)">-</button>
+          <input type="number" id="pizza6" value="0" min="0" max="50" readonly>
+          <button onclick="changeQuantity('pizza6', 1)">+</button>
+        </div>
+        <button class="btn-primary" onclick="addToCart('Pizza Pepperoni', 4500, 'pizza6')">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Salami.jpg" alt="Pizza Salami">
+        <h3>Pizza Salami</h3>
+        <span>$4500.00</span>
+        <div class="quantity-control">
+          <button onclick="changeQuantity('pizza7', -1)">-</button>
+          <input type="number" id="pizza7" value="0" min="0" max="50" readonly>
+          <button onclick="changeQuantity('pizza7', 1)">+</button>
+        </div>
+        <button class="btn-primary" onclick="addToCart('Pizza Salami', 4500, 'pizza7')">Añadir al carrito</button>
+      </div>
+    </div>
+
+    <div id="bebidas" class="menu-section" style="display: none;">
+      <!-- Menu de bebidas -->
+      <div class="menu-item">
+        <img src="Images/AGUA-CRISTAL_F.webp" alt="Botella de Agua">
+        <h3>Botella de Agua</h3>
+        <span>$800.00</span>
+        <div class="quantity-control">
+          <button onclick="changeQuantity('drink1', -1)">-</button>
+          <input type="number" id="drink1" value="0" min="0" max="50" readonly>
+          <button onclick="changeQuantity('drink1', 1)">+</button>
+        </div>
+        <button class="btn-primary" onclick="addToCart('Botella de Agua', 800, 'drink1')">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/hit-500ml.jpeg" alt="Hit">
+        <h3>Hit</h3>
+        <span>$3000.00</span>
+        <div class="quantity-control">
+          <button onclick="changeQuantity('drink2', -1)">-</button>
+          <input type="number" id="drink2" value="0" min="0" max="50" readonly>
+          <button onclick="changeQuantity('drink2', 1)">+</button>
+        </div>
+        <button class="btn-primary" onclick="addToCart('Hit', 3000, 'drink2')">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Gaseosa-Postobon-1.5-lt.png" alt="Postobón 1lt">
+        <h3>Postobón 1lt</h3>
+        <span>$3500.00</span>
+        <div class="quantity-control">
+          <button onclick="changeQuantity('drink3', -1)">-</button>
+          <input type="number" id="drink3" value="0" min="0" max="50" readonly>
+          <button onclick="changeQuantity('drink3', 1)">+</button>
+        </div>
+        <button class="btn-primary" onclick="addToCart('Postobón 1lt', 3500, 'drink3')">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/gaseosa-coca-cola-15-lt.jpg" alt="Coca-Cola 1.5lt">
+        <h3>Coca-Cola 1.5lt</h3>
+        <span>$6500.00</span>
+        <div class="quantity-control">
+          <button onclick="changeQuantity('drink4', -1)">-</button>
+          <input type="number" id="drink4" value="0" min="0" max="50" readonly>
+          <button onclick="changeQuantity('drink4', 1)">+</button>
+        </div>
+        <button class="btn-primary" onclick="addToCart('Coca-Cola 1.5lt', 6500, 'drink4')">Añadir al carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart">
+    <h2>Carrito</h2>
+    <div id="cart-items"></div>
+    <div id="cart-total"></div>
+    <button class="btn-primary" onclick="placeOrder()">Hacer Pedido</button>
+  </div>
+
+  <script>
+    let cart = [];
+    let total = 0;
+
+    function toggleSection(sectionId) {
+      const sections = document.querySelectorAll('.menu-section');
+      sections.forEach(section => {
+        if (section.id === sectionId) {
+          section.style.display = section.style.display === 'none' ? 'block' : 'none';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+    }
+
+    function changeQuantity(id, delta) {
+      const input = document.getElementById(id);
+      let value = parseInt(input.value) + delta;
+      if (value < 0) value = 0;
+      if (value > 50) value = 50;
+      input.value = value;
+    }
+
+    function addToCart(name, price, quantityId) {
+      const quantity = document.getElementById(quantityId).value;
+      if (quantity > 0) {
+        for (let i = 0; i < quantity; i++) {
+          cart.push({name, price});
+        }
+        updateCart();
+      }
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      cartItems.innerHTML = '';
+      total = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price;
+        const cartItem = document.createElement('div');
+        cartItem.innerHTML = `
+          <span>${item.name} - $${item.price.toFixed(2)}</span>
+          <button onclick="removeFromCart(${index})">Eliminar</button>
+        `;
+        cartItems.appendChild(cartItem);
+      });
+
+      document.getElementById('cart-total').innerText = `Total: $${total.toFixed(2)}`;
+    }
+
+    function placeOrder() {
+      if (cart.length === 0) {
+        alert('El carrito está vacío');
+        return;
+      }
+
+      const orderDetails = cart.map(item => item.name).join(', ');
+      const whatsappNumber = "+573186687044";
+      const message = `Hola, me gustaría ordenar lo siguiente: ${orderDetails}. Total: $${total.toFixed(2)}`;
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappUrl, '_blank');
+    }
+  </script>
+</body>
+</html>
